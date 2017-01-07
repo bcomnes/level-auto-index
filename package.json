@@ -4,7 +4,10 @@
   "description": "Automatic level-agnostic secondary indexing",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "run-s test:*",
+    "test:deps": "dependency-check ./package.json",
+    "test:lint": "standard | snazzy",
+    "test:tape": "tape test/* | tap-format-spec"
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,19 @@
   },
   "homepage": "https://github.com/hypermodules/level-auto-index#readme",
   "dependencies": {
-    "level-hookdown": "^1.0.0"
+    "level-hookdown": "^1.0.0",
+    "readable-stream": "^2.2.2",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "@tap-format/spec": "^0.2.0",
+    "dependency-check": "^2.7.0",
+    "memdb": "^1.3.1",
+    "memdown": "^1.2.4",
+    "npm-run-all": "^4.0.0",
+    "snazzy": "^5.0.0",
+    "standard": "^8.6.0",
+    "subleveldown": "^2.1.0",
+    "tape": "^4.6.3"
   }
 }
