@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/hypermodules/level-auto-index/issues"
   },
-  "homepage": "https://github.com/hypermodules/level-auto-index#readme"
+  "homepage": "https://github.com/hypermodules/level-auto-index#readme",
+  "dependencies": {
+    "level-hookdown": "^1.0.0"
+  }
 }
