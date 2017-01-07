@@ -1,0 +1,27 @@
+{
+  "name": "level-auto-index",
+  "version": "1.0.0",
+  "description": "Automatic level-agnostic secondary indexing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypermodules/level-auto-index.git"
+  },
+  "keywords": [
+    "leveldb",
+    "level",
+    "index",
+    "secondary",
+    "automatic",
+    "indexing"
+  ],
+  "author": "Bret Comnes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hypermodules/level-auto-index/issues"
+  },
+  "homepage": "https://github.com/hypermodules/level-auto-index#readme"
+}
