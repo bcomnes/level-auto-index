@@ -1,5 +1,6 @@
 var level = require('memdb')
 var AutoIndex = require('..')
+var keyReducer = AutoIndex.keyReducer
 var sub = require('level-sublevel')
 var test = require('tape')
 var multilevel = require('multilevel')
@@ -9,7 +10,7 @@ test('multilevel', function (t) {
 
   var db = sub(level({ valueEncoding: 'json' }))
   var idb = db.sublevel('title')
-  var byTitle = AutoIndex(db, idb, 'title')
+  var byTitle = AutoIndex(db, idb, keyReducer('title'))
   var server = multilevel.server(byTitle)
   var client = multilevel.client(byTitle.manifest)
 

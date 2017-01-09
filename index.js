@@ -2,7 +2,6 @@ var extend = require('xtend')
 var hook = require('level-hookdown')
 var Transform =
   require('stream').Transform || require('readable-stream').Transform
-var isArray = Array.isArray
 
 module.exports = AutoIndex
 
@@ -15,7 +14,7 @@ function AutoIndex (db, idb, reduce) {
     throw new Error('Reduce argument must be a string or function')
   }
   // Might be hookd alrady!  Lets use that
-  var hdb = !db.prehooks && isArray(db.prehooks) ? hook(db) : db
+  var hdb = !db.prehooks ? hook(db) : db
 
   function index (operation, cb) {
     if (operation.type === 'put') {
@@ -121,4 +120,13 @@ function AutoIndex (db, idb, reduce) {
   }
 
   return secondary
+}
+
+module.exports.keyReducer = keyReducer
+
+function keyReducer (reducerString) {
+  function keyRdc (value) {
+    return value[reducerString]
+  }
+  return keyRdc
 }

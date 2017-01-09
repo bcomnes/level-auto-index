@@ -1,5 +1,6 @@
 var level = require('memdb')
 var AutoIndex = require('..')
+var keyReducer = AutoIndex.keyReducer
 var sub = require('subleveldown')
 var test = require('tape')
 
@@ -14,7 +15,7 @@ test('subleveldown', function (t) {
   }
 
   var posts = sub(db, 'posts', { valueEncoding: 'json' })
-  posts.byTitle = AutoIndex(posts, index.title, 'title')
+  posts.byTitle = AutoIndex(posts, index.title, keyReducer('title'))
   posts.byLength = AutoIndex(posts, index.len, function (post) {
     return post.body.length
   })
