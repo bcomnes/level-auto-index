@@ -1,16 +1,16 @@
 var level = require('memdb')
 var AutoIndex = require('..')
 var keyReducer = AutoIndex.keyReducer
-var sub = require('level-sublevel')
+var sub = require('subleveldown')
 var test = require('tape')
 var multilevel = require('multilevel')
 
 test('multilevel', function (t) {
   t.plan(3)
 
-  var db = sub(level({ valueEncoding: 'json' }))
-  var idb = db.sublevel('title')
-  var byTitle = AutoIndex(db, idb, keyReducer('title'))
+  var posts = sub(level(), 'posts', {valueEncoding: 'json'})
+  var idb = sub(level(), 'title', {valueEncoding: 'json'})
+  var byTitle = AutoIndex(posts, idb, keyReducer('title'))
   var server = multilevel.server(byTitle)
   var client = multilevel.client(byTitle.manifest)
 
@@ -21,7 +21,7 @@ test('multilevel', function (t) {
     body: 'lorem ipsum'
   }
 
-  db.put('1337', post, function (err) {
+  posts.put('1337', post, function (err) {
     t.error(err)
 
     client.get('a title', function (err, _post) {

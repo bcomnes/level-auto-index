@@ -1,15 +1,15 @@
 var level = require('memdb')
 var AutoIndex = require('..')
 var keyReducer = AutoIndex.keyReducer
-var sub = require('level-sublevel')
+var sub = require('subleveldown')
 var test = require('tape')
 
 test('del', function (t) {
   t.plan(5)
-  var db = sub(level({ valueEncoding: 'json' }))
-  var idb = db.sublevel('title')
+  var db = level()
+  var posts = sub(db, 'posts', {valueEncoding: 'json'})
+  var idb = sub(db, 'title', {valueEncoding: 'json'})
 
-  var posts = db.sublevel('posts')
   posts.byTitle = AutoIndex(posts, idb, keyReducer('title'))
 
   posts.put('1337', {
