@@ -8,8 +8,8 @@ var multilevel = require('multilevel')
 test('multilevel', function (t) {
   t.plan(3)
 
-  var posts = sub(level(), 'posts', {valueEncoding: 'json'})
-  var idb = sub(level(), 'title', {valueEncoding: 'json'})
+  var posts = sub(level(), 'posts')
+  var idb = sub(level(), 'title')
   var byTitle = AutoIndex(posts, idb, keyReducer('title'))
   var server = multilevel.server(byTitle)
   var client = multilevel.client(byTitle.manifest)
