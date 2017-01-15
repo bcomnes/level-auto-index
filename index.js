@@ -27,7 +27,7 @@ function AutoIndex (db, idb, reduce) {
     if (operation.type === 'put') {
       key = reduce(operation.value)
       if (key) return idb.put(key, operation.key, cb)
-      return cb()
+      return process.nextTick(cb)
     } else if (operation.type === 'del') {
       db.get(operation.key, function (err, value) {
         if (err && err.type === 'NotFoundError') {
