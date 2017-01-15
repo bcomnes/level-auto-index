@@ -1,5 +1,6 @@
 var extend = require('xtend')
 var hook = require('level-hookdown')
+var existy = require('existy')
 var Transform =
   require('stream').Transform || require('readable-stream').Transform
 var isArray = Array.isArray
@@ -10,6 +11,10 @@ function puts (batchObj) {
   return batchObj.type === 'put'
 }
 
+function existyKeys (operation) {
+  return existy(operation.key)
+}
+
 function AutoIndex (db, idb, reduce) {
   var hdb = !db.prehooks || !isArray(db.prehooks) ? hook(db) : db
 
@@ -18,12 +23,17 @@ function AutoIndex (db, idb, reduce) {
   }
 
   function index (operation, cb) {
+    var key
     if (operation.type === 'put') {
-      idb.put(reduce(operation.value), operation.key, cb)
+      key = reduce(operation.value)
+      if (key) return idb.put(key, operation.key, cb)
+      return cb()
     } else if (operation.type === 'del') {
       db.get(operation.key, function (err, value) {
         if (err && err.type === 'NotFoundError') {
-          idb.del(reduce(operation.value), cb)
+          key = reduce(operation.value)
+          if (key) return idb.del(key, cb)
+          return cb()
         } else if (err) {
           cb(err)
         } else {
@@ -34,7 +44,7 @@ function AutoIndex (db, idb, reduce) {
       // todo handle dels
       var idxBatch = operation.array.filter(puts).map(function (opr) {
         if (op.type === 'put') return extend(op, {key: reduce(operation.value), value: op.key})
-      })
+      }).filter(existyKeys)
       idb.batch(idxBatch, cb)
     }
   }

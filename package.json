@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/hypermodules/level-auto-index#readme",
   "dependencies": {
+    "existy": "^1.0.1",
     "level-hookdown": "^2.0.0",
     "readable-stream": "^2.2.2",
     "xtend": "^4.0.1"
