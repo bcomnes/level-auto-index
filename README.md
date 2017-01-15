@@ -1,6 +1,6 @@
 # level-auto-index
 
-Automatic secondary indexing for leveldb compatable with subleveldown.
+Automatic secondary indexing for leveldb and subleveldown.
 
 
 ```bash
@@ -125,3 +125,11 @@ function keyReducer (reducerString) {
 ```
 
 For a higher level api for creating secondary indexes see [hypermodules/level-idx](https://github.com/hypermodules/level-idx).
+
+## See Also
+
+This module is a variant of
+
+- [juliangruber/level-secondary](https://github.com/juliangruber/level-secondary)
+
+but aimed at decoupling the index storage fromt the indexd db and also being compatable with subleveldown.  It came out of the work trying to make `level-secondary` compatable with subleveldown and level-sublevel.  That work lives here: [github.com/bcomnes/level-secondary/commit/9b2f914e53](https://github.com/bcomnes/level-secondary/commit/9b2f914e5304c791813b39abf892c32ee7616abf).
