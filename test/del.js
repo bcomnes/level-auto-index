@@ -8,7 +8,7 @@ test('del', function (t) {
   t.plan(5)
   var db = level()
   var posts = sub(db, 'posts', {valueEncoding: 'json'})
-  var idb = sub(db, 'title', {valueEncoding: 'json'})
+  var idb = sub(db, 'title')
 
   posts.byTitle = AutoIndex(posts, idb, keyReducer('title'))
 
