@@ -8,8 +8,8 @@ test('get', function (t) {
   t.plan(5)
   var db = level()
   var index = {
-    title: sub(db, 'title', {valueEncoding: 'json'}),
-    len: sub(db, 'length', {valueEncoding: 'json'})
+    title: sub(db, 'title'),
+    len: sub(db, 'length')
   }
 
   var posts = sub(db, 'posts', {valueEncoding: 'json'})
