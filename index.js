@@ -43,9 +43,9 @@ function AutoIndex (db, idb, reduce) {
     } else if (operation.type === 'batch') {
       // todo handle dels
       var idxBatch = operation.array.filter(puts).map(function (opr) {
-        if (op.type === 'put') return extend(op, {key: reduce(operation.value), value: op.key})
-      }).filter(existyKeys)
-      idb.batch(idxBatch, cb)
+        if (opr.type === 'put') return extend(opr, {key: reduce(operation.value), value: opr.key})
+      })
+      idb.batch(idxBatch.filter(existyKeys), cb)
     }
   }
 
