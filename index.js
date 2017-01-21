@@ -7,8 +7,10 @@ var isArray = Array.isArray
 
 module.exports = AutoIndex
 
-function puts (batchObj) {
-  return batchObj.type === 'put'
+function puts (opr) {
+  return (
+    opr.type === 'put' || (!existy(opr.type) && existy(opr.value) && existy(opr.value))
+  )
 }
 
 function existyKeys (operation) {
@@ -43,7 +45,7 @@ function AutoIndex (db, idb, reduce) {
     } else if (operation.type === 'batch') {
       // todo handle dels
       var idxBatch = operation.array.filter(puts).map(function (opr) {
-        if (opr.type === 'put') return extend(opr, {key: reduce(operation.value), value: opr.key})
+        return extend(opr, {key: reduce(opr.value), value: opr.key})
       })
       idb.batch(idxBatch.filter(existyKeys), cb)
     }
@@ -52,6 +54,9 @@ function AutoIndex (db, idb, reduce) {
   hdb.prehooks.push(index)
 
   var secondary = {}
+
+  secondary.db = hdb
+  secondary.idb = idb
 
   secondary.manifest = {
     methods: {
