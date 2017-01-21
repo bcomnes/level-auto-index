@@ -126,6 +126,14 @@ function keyReducer (reducerString) {
 
 For a higher level api for creating secondary indexes see [hypermodules/level-idx](https://github.com/hypermodules/level-idx).
 
+### AutoIndex#db
+
+The level instance that we are indexing.
+
+### AutoIndex#idb
+
+The level instance that we are using for the index.
+
 ## See Also
 
 This module is a variant of
