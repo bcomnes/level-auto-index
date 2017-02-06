@@ -1,6 +1,6 @@
 {
   "name": "level-auto-index",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Automatic level-agnostic secondary indexing",
   "main": "index.js",
   "scripts": {
