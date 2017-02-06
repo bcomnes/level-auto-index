@@ -100,15 +100,16 @@ function AutoIndex (db, idb, reduce) {
     var tr = Transform({ objectMode: true })
 
     tr._transform = function (chunk, enc, done) {
-      var key = chunk.value
+      var dbKey = chunk.value
+      var idbKey = chunk.key
       if (opts.values === false) {
-        done(null, key)
+        done(null, dbKey)
         return
       }
 
-      db.get(key, function (err, value) {
+      db.get(dbKey, function (err, value) {
         if (err && err.type === 'NotFoundError') {
-          idb.del(key, done)
+          idb.del(idbKey, done)
         } else if (err) {
           done(err)
         } else {
@@ -120,7 +121,7 @@ function AutoIndex (db, idb, reduce) {
             done(null, value)
           } else {
             done(null, {
-              key: key,
+              key: dbKey,
               value: value
             })
           }
