@@ -16,4 +16,3 @@ test('db-access', function (t) {
   t.deepEqual(posts.byTitle.idb, idb)
   t.end()
 })
-

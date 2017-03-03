@@ -32,4 +32,3 @@ test('empty index keys', function (t) {
     })
   })
 })
-

@@ -35,4 +35,3 @@ test('key encoding', function (t) {
     })
   })
 })
-
