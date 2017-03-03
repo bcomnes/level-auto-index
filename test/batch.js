@@ -43,4 +43,3 @@ test('batch', function (t) {
     })
   })
 })
-

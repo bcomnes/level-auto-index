@@ -36,4 +36,3 @@ test('get', function (t) {
     })
   })
 })
-

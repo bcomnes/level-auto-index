@@ -36,4 +36,3 @@ test('del', function (t) {
     })
   })
 })
-

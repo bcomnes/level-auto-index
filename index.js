@@ -86,12 +86,14 @@ function AutoIndex (db, idb, reduce) {
   }
 
   secondary.createValueStream = function (opts) {
-    (opts && opts || (opts = {})).keys = false
+    if (!opts) opts = {}
+    opts.keys = false
     return secondary.createReadStream(opts)
   }
 
   secondary.createKeyStream = function (opts) {
-    (opts && opts || (opts = {})).values = false
+    if (!opts) opts = {}
+    opts.values = false
     return secondary.createReadStream(opts)
   }
 

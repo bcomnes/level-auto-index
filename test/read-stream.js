@@ -50,4 +50,3 @@ test('read streams', function (t) {
     })
   })
 })
-
