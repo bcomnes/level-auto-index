@@ -1,5 +1,7 @@
 # level-auto-index
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hypermodules/level-auto-index.svg)](https://greenkeeper.io/)
+
 Automatic secondary indexing for leveldb and subleveldown.
 
 
