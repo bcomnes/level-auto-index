@@ -1,7 +1,5 @@
 # level-auto-index
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/hypermodules/level-auto-index.svg)](https://greenkeeper.io/)
-
 Automatic secondary indexing for leveldb and subleveldown.
 
 
@@ -13,6 +11,7 @@ npm install level-auto-index
 [![Build Status](https://travis-ci.org/hypermodules/level-auto-index.svg?branch=master)](https://travis-ci.org/hypermodules/level-auto-index)
 [![dependencies Status](https://david-dm.org/hypermodules/level-auto-index/status.svg)](https://david-dm.org/hypermodules/level-auto-index)
 [![devDependencies Status](https://david-dm.org/hypermodules/level-auto-index/dev-status.svg)](https://david-dm.org/hypermodules/level-auto-index?type=dev)
+[![Greenkeeper badge](https://badges.greenkeeper.io/hypermodules/level-auto-index.svg)](https://greenkeeper.io/)
 
 <img height="100" src="index.png">
 
