@@ -36,7 +36,7 @@
   "devDependencies": {
     "@tap-format/spec": "^0.2.0",
     "bytewise": "^1.1.0",
-    "dependency-check": "^2.7.0",
+    "dependency-check": "^3.0.0",
     "memdb": "^1.3.1",
     "memdown": "^1.4.1",
     "multilevel": "~7.3.0",
