@@ -26,12 +26,12 @@ test('del', function (t) {
         t.ok(err.notFound)
 
         posts.byTitle.createReadStream()
-        .on('data', function () {
-          t.fail()
-        })
-        .on('end', function () {
-          t.ok(true)
-        })
+          .on('data', function () {
+            t.fail()
+          })
+          .on('end', function () {
+            t.ok(true)
+          })
       })
     })
   })
