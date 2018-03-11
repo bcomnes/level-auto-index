@@ -25,6 +25,7 @@ npm install level-auto-index
 var level = require('level')
 var AutoIndex = require('level-auto-index')
 var sub = require('subleveldown')
+var keyReducer = AutoIndex.keyReducer
 
 var db = level()
 
