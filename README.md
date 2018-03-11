@@ -1,4 +1,4 @@
-# level-auto-index
+****# level-auto-index
 
 Automatic secondary indexing for leveldb and subleveldown.
 
@@ -32,7 +32,8 @@ var db = level()
 var posts = sub(db, 'posts', {valueEncoding: 'json'})
 var idx = {
   title: sub(db, 'title'),
-  length: sub(db, 'length')
+  length: sub(db, 'length'),
+  tag: sub(db, 'tag')
 }
 
 // add a title index
@@ -44,10 +45,19 @@ posts.byLength = AutoIndex(posts, idx.length, function (post) {
   return post.body.length + '!' + post.id
 })
 
+// Create multiple index keys on an index
+posts.byTag = AutoIndex(posts, idx.tag, function (post) {
+    if (!post || !post.tags || !Array.isArray(post.tags)) return
+    return post.tags.map(function (tag) {
+      return [tag, post.id].join('!')
+    })
+  }, { multi: true })
+
 posts.put('1337', {
   id: '1337',
   title: 'a title',
-  body: 'lorem ipsum'
+  body: 'lorem ipsum',
+  tags: [ 'foo', 'bar', 'baz' ]
 }, function (err) {
   if (err) throw err
 
@@ -87,7 +97,7 @@ posts.put('1337', {
 
 ## API
 
-### AutoIndex(db, idb, reduce)
+### AutoIndex(db, idb, reduce, opts)
 
 Automatically index a `db` level into the `idb` level using a `reduce` function that creates the index key.  The `db` and `idb` levels should be in isolated key namespaces, either by being two different levels or [`mafintosh/subleveldown`](https://github.com/mafintosh/subleveldown) partitions.  The `db` hook is mutated by [`hypermodules/level-hookdown`](https://github.com/hypermodules/level-hookdown) to set up the prehooks used for indexing.  Only `db` keys are stored as values to save space and reduce data redundancy.
 
@@ -101,6 +111,16 @@ function reducer (value) {
   return idxKey
 }
 ```
+
+Available opts:
+
+```js
+{
+  multi: false // Reducer returns an array of keys to associate with the primary key
+}
+```
+
+Multi-key index's are for when you you want to write multiple index entries into an index.  This is useful for 'tag' fields, where a document may have `n` tags per document, and you would like to index documents by 'tag'.  When creating a multi-key index, your reducer must return an array of keys to index by.
 
 ### AutoIndex#get(key, opts, cb)
 
@@ -128,6 +148,20 @@ function keyReducer (reducerString) {
 ```
 
 For a higher level api for creating secondary indexes see [hypermodules/level-idx](https://github.com/hypermodules/level-idx).
+
+### AutoIndex.keyReducer(string)
+
+A shortcut reducer for simplistic multi-key indexing.  You might need more than this.
+
+```js
+function multiKeyReducer (multiFieldName, primaryKeyFieldName) {
+  return function multiKeyrdc (document) {
+    if (!document || !document[multiFieldName] || !Array.isArray(document[multiFieldName])) return
+    return document[multiFieldName].map(function (tag) {
+      return [tag, document[primaryKeyFieldName]].join('!')
+    })
+  }
+```
 
 ### AutoIndex#db
 
