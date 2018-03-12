@@ -1,4 +1,4 @@
-****# level-auto-index
+# level-auto-index
 
 Automatic secondary indexing for leveldb and subleveldown.
 
