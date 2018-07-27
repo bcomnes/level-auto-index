@@ -45,7 +45,7 @@
     "npm-run-all": "^4.0.0",
     "snazzy": "^7.0.0",
     "standard": "^11.0.0",
-    "subleveldown": "^2.1.0",
+    "subleveldown": "^3.0.1",
     "tape": "^4.6.3"
   }
 }
