@@ -15,7 +15,7 @@ npm install level-auto-index
 
 <img height="100" src="index.png">
 
-[level-badge]: http://leveldb.org/img/badge.svg
+[level-badge]: https://camo.githubusercontent.com/1bd15320a5fad1db168bba8bcedb098735f82464/68747470733a2f2f6c6576656c6a732e6f72672f696d672f62616467652e737667
 [npm-image]: https://img.shields.io/npm/v/level-auto-index.svg
 [npm-url]: https://www.npmjs.com/package/level-auto-index
 
