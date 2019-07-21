@@ -6,7 +6,7 @@ var test = require('tape')
 test('empty index keys', function (t) {
   t.plan(3)
   var db = level()
-  var posts = sub(db, 'posts', {valueEncoding: 'json'})
+  var posts = sub(db, 'posts', { valueEncoding: 'json' })
   var idb = sub(db, 'title')
 
   posts.byEmpty = AutoIndex(posts, idb, function (value) {
