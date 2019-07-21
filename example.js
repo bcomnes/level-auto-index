@@ -5,7 +5,7 @@ var sub = require('subleveldown')
 
 var db = level()
 
-var posts = sub(db, 'posts', {valueEncoding: 'json'})
+var posts = sub(db, 'posts', { valueEncoding: 'json' })
 var idx = {
   title: sub(db, 'title'),
   length: sub(db, 'length')

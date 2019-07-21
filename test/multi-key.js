@@ -11,7 +11,7 @@ test('multi-key index', function (t) {
     tags: sub(db, 'tags')
   }
 
-  var posts = sub(db, 'posts', {valueEncoding: 'json'})
+  var posts = sub(db, 'posts', { valueEncoding: 'json' })
   posts.byTag = AutoIndex(posts, index.tags, multiKeyReducer('tags', 'id'), { multi: true })
 
   var postData = [
@@ -19,7 +19,7 @@ test('multi-key index', function (t) {
       title: 'a title',
       id: 0,
       body: 'lorem ipsum',
-      tags: [ 'foo', 'bar', 'baz' ]
+      tags: ['foo', 'bar', 'baz']
     },
     {
       title: 'second title',

@@ -12,7 +12,7 @@ test('get', function (t) {
     len: sub(db, 'length')
   }
 
-  var posts = sub(db, 'posts', {valueEncoding: 'json'})
+  var posts = sub(db, 'posts', { valueEncoding: 'json' })
   posts.byTitle = AutoIndex(posts, index.title, keyReducer('title'))
   posts.byLength = AutoIndex(posts, index.len, function (post) {
     return post.body.length

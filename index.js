@@ -71,7 +71,7 @@ function AutoIndex (db, idb, reduce, opts) {
     } else if (operation.type === 'batch') {
       // todo handle dels
       var idxBatch = operation.array.filter(puts).map(function (opr) {
-        return extend(opr, {key: reduce(opr.value), value: opr.key})
+        return extend(opr, { key: reduce(opr.value), value: opr.key })
       })
       if (multiKey) {
         idxBatch = idxBatch.reduce(function (flattened, opr) {
