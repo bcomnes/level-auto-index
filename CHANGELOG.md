@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.0 - 2019-07-21
+
+* Update all deps
+  * Update level-hookdown
+    * update Levelup 4.1.0
+
 ## 1.1.0 - 2018-03-08
 
 * Add multi-key indexing.  Multi-key reducers can return an array of keys to index per `put`, `del`, or `batch`. Thanks [@louiscenter](https://github.com/louiscenter) and [@substack](https://github.com/substack) for the idea.
