@@ -10,11 +10,11 @@ test('key encoding', function (t) {
   var db = level()
   var index = {
     // value encoding should match keyEncoding of indexd db
-    title: sub(db, 'title', {valueEncoding: bytewise}),
-    len: sub(db, 'length', {valueEncoding: bytewise})
+    title: sub(db, 'title', { valueEncoding: bytewise }),
+    len: sub(db, 'length', { valueEncoding: bytewise })
   }
 
-  var posts = sub(db, 'posts', {valueEncoding: 'json', keyEncoding: bytewise})
+  var posts = sub(db, 'posts', { valueEncoding: 'json', keyEncoding: bytewise })
   posts.byTitle = AutoIndex(posts, index.title, keyReducer('title'))
   posts.byLength = AutoIndex(posts, index.len, function (post) {
     return post.body.length

@@ -7,19 +7,19 @@ var test = require('tape')
 test('batch', function (t) {
   t.plan(6)
   var db = level()
-  var posts = sub(db, 'posts', {valueEncoding: 'json'})
+  var posts = sub(db, 'posts', { valueEncoding: 'json' })
   var idb = sub(db, 'title')
 
   posts.byTitle = AutoIndex(posts, idb, keyReducer('title'))
 
-  var testVal = {title: 'another title', 'body': 'another body'}
+  var testVal = { title: 'another title', body: 'another body' }
 
   var data = [
-    {type: 'put', key: 'first', value: {title: 'first batch title', 'body': 'batch lorem ipsum'}},
-    {key: 'another', value: testVal},
-    {type: 'put', key: 'third', value: {title: 'a third title', 'body': 'lorem ipsum 3'}},
-    {type: 'put', key: 'final', value: {title: 'a final title', 'body': 'the final lorem ipsum'}},
-    {type: 'del', key: '1337'}
+    { type: 'put', key: 'first', value: { title: 'first batch title', body: 'batch lorem ipsum' } },
+    { key: 'another', value: testVal },
+    { type: 'put', key: 'third', value: { title: 'a third title', body: 'lorem ipsum 3' } },
+    { type: 'put', key: 'final', value: { title: 'a final title', body: 'the final lorem ipsum' } },
+    { type: 'del', key: '1337' }
   ]
 
   posts.put('1337', {

@@ -37,14 +37,14 @@
   "devDependencies": {
     "@tap-format/spec": "^0.2.0",
     "bytewise": "^1.1.0",
-    "concat-stream": "^1.6.1",
+    "concat-stream": "^2.0.0",
     "dependency-check": "^3.0.0",
     "memdb": "^1.3.1",
     "memdown": "^3.0.0",
     "multilevel": "~7.3.0",
     "npm-run-all": "^4.0.0",
     "snazzy": "^8.0.0",
-    "standard": "^11.0.0",
+    "standard": "^13.1.0",
     "subleveldown": "^2.1.0",
     "tape": "^4.6.3"
   }

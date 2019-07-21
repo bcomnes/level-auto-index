@@ -5,7 +5,7 @@ var test = require('tape')
 
 test('db-access', function (t) {
   var db = level()
-  var posts = sub(db, 'posts', {valueEncoding: 'json'})
+  var posts = sub(db, 'posts', { valueEncoding: 'json' })
   var idb = sub(db, 'title')
 
   posts.byTitle = AutoIndex(posts, idb, function (post) {
