@@ -44,7 +44,7 @@
     "multilevel": "~7.3.0",
     "npm-run-all": "^4.0.0",
     "snazzy": "^7.0.0",
-    "standard": "^11.0.0",
+    "standard": "^13.1.0",
     "subleveldown": "^2.1.0",
     "tape": "^4.6.3"
   }
