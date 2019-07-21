@@ -16,7 +16,7 @@ test('batch', function (t) {
 
   var data = [
     { type: 'put', key: 'first', value: { title: 'first batch title', body: 'batch lorem ipsum' } },
-    { key: 'another', value: testVal },
+    { type: 'put', key: 'another', value: testVal },
     { type: 'put', key: 'third', value: { title: 'a third title', body: 'lorem ipsum 3' } },
     { type: 'put', key: 'final', value: { title: 'a final title', body: 'the final lorem ipsum' } },
     { type: 'del', key: '1337' }

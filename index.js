@@ -38,7 +38,7 @@ function AutoIndex (db, idb, reduce, opts) {
         if (!Array.isArray(key)) throw new Error('Reducer must return an array of keys for a multiKey index')
         keyBatch = key.filter(empty).map(
           function (k) {
-            return { key: k, value: operation.key }
+            return { key: k, value: operation.key, type: 'put' }
           }
         )
         return idb.batch(keyBatch, cb)
