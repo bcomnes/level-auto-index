@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "run-s test:*",
-    "test:deps": "dependency-check ./package.json",
+    "test:deps": "dependency-check ./package.json --no-dev",
     "test:lint": "standard | snazzy",
     "test:tape": "tape test/* | tap-format-spec",
     "debug": "node --nolazy --inspect-brk=9229 node_modules/.bin/tape test/*"
@@ -38,7 +38,7 @@
     "@tap-format/spec": "^0.2.0",
     "bytewise": "^1.1.0",
     "concat-stream": "^2.0.0",
-    "dependency-check": "^3.4.1",
+    "dependency-check": "^4.1.0",
     "memdb": "^1.3.1",
     "memdown": "^4.1.0",
     "multilevel": "~7.2.3",
