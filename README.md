@@ -173,6 +173,9 @@ The level instance that we are using for the index.
 
 ## See Also
 
+- [hypermodules/level-hookdown](https://github.com/hypermodules/level-hookdown) - Simple levelup hooks implemented using instance method override of arbitrary levelups.
+- [hypermodules/level-idx](https://github.com/hypermodules/level-idx) - Another high-level API for creating secondary leveldb indexes using `level-auto-index` and `level-hookdown`.
+
 This module is a variant of
 
 - [juliangruber/level-secondary](https://github.com/juliangruber/level-secondary)
