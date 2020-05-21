@@ -160,6 +160,7 @@ function AutoIndex (db, idb, reduce, opts) {
           } else {
             done(null, {
               key: dbKey,
+              indexKey: idbKey,
               value: value
             })
           }

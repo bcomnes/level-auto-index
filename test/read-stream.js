@@ -31,6 +31,7 @@ test('read streams', function (t) {
     }).on('data', function (data) {
       t.deepEqual(data, {
         key: '1337',
+        indexKey: '11',
         value: post
       })
     })
