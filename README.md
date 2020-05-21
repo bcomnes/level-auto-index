@@ -79,8 +79,8 @@ posts.put('1337', {
     start: 10,
     end: 20
   }).on('data', console.log.bind(console, 'read'))
-  // => read { key: '1337', value: { id: '1337', title: 'a title', body: 'lorem ipsum' } }
-
+  // => read { key: '1337', indexKey: '11!1337', value: { id: '1337', title: 'a title', body: 'lorem ipsum' } }
+  
   posts.byLength.createKeyStream({
     start: 10,
     end: 20
@@ -128,7 +128,7 @@ Get the value that has been indexed with `key`.
 
 ### AutoIndex#create{Key,Value,Read}Stream(opts)
 
-Create a readable stream that has indexes as keys and indexed data as values.
+Create a readable streams. The order of entries matches the ordering of the indices. Keys and values are taken from the underlying level. If both `key` and `value` are requested, the entries will contains another field `indexKey`, which contains the index key for that entry.
 
 ### AutoIndex#manifest
 

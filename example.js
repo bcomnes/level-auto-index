@@ -45,7 +45,7 @@ posts.put('1337', {
     start: 10,
     end: 20
   }).on('data', console.log.bind(console, 'read'))
-  // => read { key: '1337', value: { id: '1337', title: 'a title', body: 'lorem ipsum' } }
+  // => read { key: '1337', indexKey: '11!1337', value: { id: '1337', title: 'a title', body: 'lorem ipsum' } }
 
   posts.byLength.createKeyStream({
     start: 10,

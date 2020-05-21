@@ -68,10 +68,13 @@ test('multi-key index', function (t) {
       function handleResults (data) {
         t.equal(data.length, 3)
         t.equal(data[0].key, '0')
+        t.equal(data[0].indexKey, 'foo!0')
         t.deepEqual(data[0].value, postData[0])
         t.equal(data[1].key, '20')
+        t.equal(data[1].indexKey, 'foo!20')
         t.deepEqual(data[1].value, singlePost)
         t.equal(data[2].key, '3')
+        t.equal(data[2].indexKey, 'foo!3')
         t.deepEqual(data[2].value, postData[3])
         posts.del(3, function (err) {
           t.error(err)
@@ -97,8 +100,11 @@ test('multi-key index', function (t) {
         tagIndexStream.pipe(concatStream)
         function handleResults (data) {
           t.equal(data.length, 2)
+          t.equal(data[0].key, '0')
+          t.equal(data[0].indexKey, 'foo!0')
           t.deepEqual(data[0].value, postData[0])
           t.equal(data[1].key, '20')
+          t.equal(data[1].indexKey, 'foo!20')
           t.deepEqual(data[1].value, singlePost)
           t.end()
         }
